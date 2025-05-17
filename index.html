@@ -146,20 +146,30 @@
                   <div class="col-md-5">
                      <div class="book_room">
                         <h1>Book a Room Online</h1>
-                        <form class="book_now">
+                        <!-- Room summary display -->
+                        <div id="roomSummary" style="margin-bottom:10px; color:#ff5252; font-weight:bold;"></div>
+                        <form class="book_now" action="https://formspree.io/f/mkgryyzr" method="POST">
+                           <!-- Hidden fields for room and price -->
+                           <input type="hidden" name="room_name" id="selectedRoom">
+                           <input type="hidden" name="room_price" id="selectedPrice">
                            <div class="row">
                               <div class="col-md-12">
                                  <span>Arrival</span>
-                                 <img class="date_cua" src="images/date.png">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
+                                 <img class="date_cua" src="images/date.png" alt="Date Icon">
+                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="arrival_date" required>
                               </div>
                               <div class="col-md-12">
                                  <span>Departure</span>
-                                 <img class="date_cua" src="images/date.png">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
+                                 <img class="date_cua" src="images/date.png" alt="Date Icon">
+                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="departure_date" required>
                               </div>
                               <div class="col-md-12">
-                                 <button class="book_btn">Book Now</button>
+                                 <span>Email</span>
+                                 <i class="fa fa-envelope date_cua" aria-hidden="true" style="font-size:20px;color:#888;margin-right:5px;"></i>
+                                 <input class="online_book" placeholder="Enter your email" type="email" name="booking_email" required>
+                              </div>
+                              <div class="col-md-12">
+                                 <button class="book_btn" id="bookNowBtn" type="submit" disabled>Book Now</button>
                               </div>
                            </div>
                         </form>
@@ -197,7 +207,7 @@ Kimpton Hotel Wilshire in Los Angeles is just one example of how we bring luxury
       </div>
       <!-- end about -->
       <!-- our_room -->
-      <div  class="our_room">
+      <div class="our_room">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -211,7 +221,7 @@ Kimpton Hotel Wilshire in Los Angeles is just one example of how we bring luxury
             </div>
             <div class="row">
                <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
+                  <div id="serv_hover" class="room" data-room="Double Queen Room" data-price="$400/night" style="cursor:pointer;">
                      <div class="room_img">
                         <figure><img src="images/room1.jpg" alt="#"/></figure>
                      </div>
@@ -223,7 +233,7 @@ Kimpton Hotel Wilshire in Los Angeles is just one example of how we bring luxury
                   </div>
                </div>
                <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
+                  <div id="serv_hover" class="room" data-room="Accessible Room" data-price="$300/night" style="cursor:pointer;">
                      <div class="room_img">
                         <figure><img src="images/room2.jpg" alt="#"/></figure>
                      </div>
@@ -235,7 +245,7 @@ Kimpton Hotel Wilshire in Los Angeles is just one example of how we bring luxury
                   </div>
                </div>
                <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
+                  <div id="serv_hover" class="room" data-room="Deluxe King Room" data-price="$400/night" style="cursor:pointer;">
                      <div class="room_img">
                         <figure><img src="images/room3.jpg" alt="#"/></figure>
                      </div>
@@ -247,7 +257,7 @@ Kimpton Hotel Wilshire in Los Angeles is just one example of how we bring luxury
                   </div>
                </div>
                <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
+                  <div id="serv_hover" class="room" data-room="Skyline View Room" data-price="$350/night" style="cursor:pointer;">
                      <div class="room_img">
                         <figure><img src="images/room4.jpg" alt="#"/></figure>
                      </div>
@@ -259,7 +269,7 @@ Kimpton Hotel Wilshire in Los Angeles is just one example of how we bring luxury
                   </div>
                </div>
                <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
+                  <div id="serv_hover" class="room" data-room="Suite with Living Area" data-price="$300/night" style="cursor:pointer;">
                      <div class="room_img">
                         <figure><img src="images/room5.jpg" alt="#"/></figure>
                      </div>
@@ -271,7 +281,7 @@ Kimpton Hotel Wilshire in Los Angeles is just one example of how we bring luxury
                   </div>
                </div>
                <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
+                  <div id="serv_hover" class="room" data-room="Premium Corner Room" data-price="$400/night" style="cursor:pointer;">
                      <div class="room_img">
                         <figure><img src="images/room6.jpg" alt="#"/></figure>
                      </div>
@@ -411,22 +421,22 @@ Stay updated with the latest news, travel tips, and local happenings around Los 
             </div>
             <div class="row">
                <div class="col-md-6">
-                  <form id="request" class="main_form">
+                  <form id="request" class="main_form" action="https://formspree.io/f/mblowwlq" method="POST">
                      <div class="row">
                         <div class="col-md-12 ">
-                           <input class="contactus" placeholder="Name" type="type" name="Name"> 
+                           <input class="contactus" placeholder="Name" type="text" name="Name" required>
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Email" type="type" name="Email"> 
+                           <input class="contactus" placeholder="Email" type="email" name="Email" required>
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Phone Number" type="type" name="Phone Number">                          
+                           <input class="contactus" placeholder="Phone Number" type="text" name="Phone Number" required>
                         </div>
                         <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="type" Message="Name">Message</textarea>
+                           <textarea class="textarea" placeholder="Message" name="Message" required></textarea>
                         </div>
                         <div class="col-md-12">
-                           <button class="send_btn">Send</button>
+                           <button class="send_btn" type="submit">Send</button>
                         </div>
                      </div>
                   </form>
@@ -503,5 +513,46 @@ Stay updated with the latest news, travel tips, and local happenings around Los 
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
+      <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var bookBtn = document.getElementById('bookNowBtn');
+    var selectedRoomInput = document.getElementById('selectedRoom');
+    var selectedPriceInput = document.getElementById('selectedPrice');
+    var roomSummary = document.getElementById('roomSummary');
+
+    // Make sure the button is disabled at first
+    if (bookBtn) bookBtn.disabled = true;
+
+    // Room selection logic
+    document.querySelectorAll('.room').forEach(function(roomCard) {
+        roomCard.addEventListener('click', function() {
+            var roomName = this.getAttribute('data-room');
+            var roomPrice = this.getAttribute('data-price');
+            if (selectedRoomInput && selectedPriceInput && roomSummary && bookBtn) {
+                selectedRoomInput.value = roomName;
+                selectedPriceInput.value = roomPrice;
+                roomSummary.textContent = "Selected: " + roomName + " (" + roomPrice + ")";
+                bookBtn.disabled = false;
+            }
+            // Highlight selected room
+            document.querySelectorAll('.room').forEach(function(r){ r.style.boxShadow = ""; });
+            this.style.boxShadow = "0 0 0 4px #ff5252";
+            document.querySelector('.book_room').scrollIntoView({behavior: "smooth"});
+        });
+    });
+
+    // Prevent form submission if no room is selected
+    document.querySelector('.book_now').addEventListener('submit', function(e) {
+        if (!selectedRoomInput.value) {
+            alert('Please pick a room before booking. You will be taken to the room selection section.');
+            var roomSection = document.querySelector('.our_room');
+            if(roomSection) {
+                roomSection.scrollIntoView({behavior: "smooth"});
+            }
+            e.preventDefault();
+        }
+    });
+});
+</script>
    </body>
 </html>
