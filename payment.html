@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment - Kimpton Hotel Wilshire</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style>
+      body {
+        background: #f8f9fa;
+      }
+      .payment-methods {
+        margin-top: 40px;
+      }
+      .payment-option .card {
+        border: none;
+        border-radius: 18px;
+        background: #fff;
+      }
+      .payment-option .card-body {
+        padding: 2rem 1.5rem;
+      }
+      @media (max-width: 767px) {
+        .payment-methods {
+          margin-top: 20px;
+        }
+        .payment-option .card-body {
+          padding: 1.2rem 0.5rem;
+        }
+        .display-4 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mt-5 text-center">Complete Your Booking</h2>
+      <div id="bookingDetails" class="alert alert-info mt-3 text-center"></div>
+      <div class="payment-methods row justify-content-center">
+        <div class="col-md-5 col-12 payment-option mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+              <h4 class="mb-3" style="color: #28c101">
+                <i class="fa fa-money"></i> Cash App
+              </h4>
+              <p>Send payment to:</p>
+              <div class="display-4 mb-2" style="font-weight: 700; color: #222">
+                $Brooklyn1269
+              </div>
+              <img
+                src="images/cashapp-qr.png"
+                alt="Cash App QR"
+                style="
+                  max-width: 140px;
+                  width: 100%;
+                  margin: 10px auto;
+                  display: block;
+                  border-radius: 12px;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                "
+              />
+              <p class="mt-2 mb-0" style="font-size: 14px; color: #888">
+                Scan QR with Cash App
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-12 payment-option mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+              <h4 class="mb-3" style="color: #0070ba">
+                <i class="fa fa-paypal"></i> PayPal
+              </h4>
+              <form
+                action="https://www.paypal.com/cgi-bin/webscr"
+                method="post"
+                target="_blank"
+              >
+                <input type="hidden" name="cmd" value="_xclick" />
+                <input
+                  type="hidden"
+                  name="business"
+                  value="tranik08@outlook.com"
+                />
+                <input
+                  type="hidden"
+                  name="item_name"
+                  id="paypalItemName"
+                  value=""
+                />
+                <input type="hidden" name="amount" id="paypalAmount" value="" />
+                <input type="hidden" name="currency_code" value="USD" />
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-block"
+                  style="font-size: 18px; padding: 10px 0"
+                >
+                  Pay with PayPal
+                </button>
+              </form>
+              <p class="mt-3 mb-0" style="font-size: 14px; color: #888">
+                You will be redirected to PayPal to complete your payment
+                securely.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Parse URL parameters and display booking details
+      const params = new URLSearchParams(window.location.search);
+      const room = params.get("room") || "";
+      const price = params.get("price") || "";
+      document.getElementById(
+        "bookingDetails"
+      ).textContent = `Room: ${room} | Price: ${price}`;
+      // Set PayPal item name and amount
+      document.getElementById("paypalItemName").value = room;
+      // Extract numeric value from price string (e.g., "$400/night" -> 400)
+      const priceMatch = price.match(/\$([\d.]+)/);
+      document.getElementById("paypalAmount").value = priceMatch
+        ? priceMatch[1]
+        : "";
+    </script>
+  </body>
+</html>

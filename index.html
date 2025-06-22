@@ -1,558 +1,838 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- basic -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- mobile metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
-      <title>Kimpton</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
-      <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-      <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!--[if lt IE 9]>
+  <head>
+    <!-- basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <!-- site metas -->
+    <title>Kimpton</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
+    <!-- Tweaks for older IEs-->
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen"
+    />
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   </head>
-   <style>
-      .Headme{
-         font-family: fantasy;
-         font-size: 25px;
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+    ><![endif]-->
+    <style>
+      .Headme {
+        font-family: fantasy;
+        font-size: 25px;
+      }
+      .navbar {
+        background: #fff !important;
+        border-radius: 0 0 18px 18px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+        padding: 0.7rem 1.2rem;
+      }
+      .navbar-nav .nav-link {
+        font-weight: 700;
+        color: #222 !important;
+        font-size: 1.08rem;
+        margin: 0 0.7rem;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+      }
+      .navbar-nav .nav-link.active,
+      .navbar-nav .nav-link:hover {
+        color: #d7263d !important;
+        border-bottom: 2px solid #d7263d;
+        background: none;
+      }
+      .navbar-toggler {
+        border: none;
+        outline: none;
+      }
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(215,38,61,0.7)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+      @media (max-width: 767px) {
+        .Headme {
+          font-size: 1.3rem;
+          color: red;
+        }
+        .navbar-nav .nav-link {
+          font-size: 1rem;
+          margin: 0 0.2rem;
+        }
       }
       .price-tag {
-         margin-top: 10px;
-         display: inline-block;
-         background: #ff5252;
-         color: #fff;
-         font-weight: bold;
-         font-size: 20px;
-         padding: 6px 18px;
-         border-radius: 25px;
-         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-         letter-spacing: 1px;
-         transition: background 0.3s;
+        margin-top: 10px;
+        display: inline-block;
+        background: #ff5252;
+        color: #fff;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 6px 18px;
+        border-radius: 25px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        letter-spacing: 1px;
+        transition: background 0.3s;
       }
       .price-tag span {
-         font-size: 14px;
-         color: #ffeaea;
-         font-weight: normal;
+        font-size: 14px;
+        color: #ffeaea;
+        font-weight: normal;
       }
-   </style>
-   <!-- body -->
-   <body class="main-layout">
-      <!-- loader  -->
-      <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#"/></div>
-      </div>
-      <!-- end loader -->
-      <!-- header -->
-      <header>
-         <!-- header inner -->
-         <div class="header">
-            <div class="container">
-               <div class="row">
-                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                     <div class="full">
-                        <div class="center-desk">
-                           <div class="logo">
-                               <a href="index.html"><h1 class="Headme" style="color: red;" >KIMPTON HOTEL WILSHIRE</h1></a>
-                           </div>
-                        </div>
-                     </div>
+    </style>
+  </head>
+  <!-- body -->
+  <body class="main-layout">
+    <!-- loader  -->
+    <div class="loader_bg">
+      <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <header>
+      <!-- header inner -->
+      <div class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+              <div class="full">
+                <div class="center-desk">
+                  <div class="logo">
+                    <a href="index.html">
+                      <h1 class="Headme" style="color: red">
+                        KIMPTON HOTEL WILSHIRE
+                      </h1>
+                    </a>
                   </div>
-                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarsExample04">
-                           <ul class="navbar-nav mr-auto">
-                              <li class="nav-item active">
-                                 <a class="nav-link" href="index.html">Home</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="about.html">About</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="room.html">Our room</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="gallery.html">Gallery</a>
-                              </li>
-                              <!-- <li class="nav-item">
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+              <nav class="navigation navbar navbar-expand-md navbar-dark">
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarsExample04"
+                  aria-controls="navbarsExample04"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarsExample04">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="room.html">Our room</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <!-- <li class="nav-item">
                                  <a class="nav-link" href="blog.html">Blog</a>
                               </li> -->
-                              <li class="nav-item">
-                                 <a class="nav-link" href="contact.html">Contact Us</a>
-                              </li>
-                           </ul>
-                        </div>
-                     </nav>
-                  </div>
-               </div>
+                    <li class="nav-item">
+                      <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
             </div>
-         </div>
-      </header>
-      <!-- end header inner -->
-      <!-- end header -->
-      <!-- banner -->
-      <section class="banner_main">
-         <div id="myCarousel" class="carousel slide banner" data-ride="carousel">
-            <ol class="carousel-indicators">
-               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-               <li data-target="#myCarousel" data-slide-to="1"></li>
-               <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-               <div class="carousel-item active">
-                  <img class="first-slide" src="images/banner1.jpg" alt="First slide">
-                  <div class="container">
-                  </div>
-               </div>
-               <div class="carousel-item">
-                  <img class="second-slide" src="images/banner2.jpg" alt="Second slide">
-               </div>
-               <div class="carousel-item">
-                  <img class="third-slide" src="images/banner3.jpg" alt="Third slide">
-               </div>
-            </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-            </a>
-         </div>
-         <div class="booking_ocline">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-5">
-                     <div class="book_room">
-                        <h1>Book a Room Online</h1>
-                        <!-- Room summary display -->
-                        <div id="roomSummary" style="margin-bottom:10px; color:#ff5252; font-weight:bold;"></div>
-                        <form class="book_now" action="https://formspree.io/f/mkgryyzr" method="POST">
-                           <!-- Hidden fields for room and price -->
-                           <input type="hidden" name="room_name" id="selectedRoom">
-                           <input type="hidden" name="room_price" id="selectedPrice">
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <span>Arrival</span>
-                                 <img class="date_cua" src="images/date.png" alt="Date Icon">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="arrival_date" required>
-                              </div>
-                              <div class="col-md-12">
-                                 <span>Departure</span>
-                                 <img class="date_cua" src="images/date.png" alt="Date Icon">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="departure_date" required>
-                              </div>
-                              <div class="col-md-12">
-                                 <span>Email</span>
-                                 <i class="fa fa-envelope date_cua" aria-hidden="true" style="font-size:20px;color:#888;margin-right:5px;"></i>
-                                 <input class="online_book" placeholder="Enter your email" type="email" name="booking_email" required>
-                              </div>
-                              <div class="col-md-12">
-                                 <button class="book_btn" id="bookNowBtn" type="submit" disabled>Book Now</button>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- end banner -->
-      <!-- about -->
-      <div class="about">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-md-5">
-                  <div class="titlepage">
-                     <h2>About Us</h2>
-                     <p style="font-size: 14px;">At Kimpton Hotels, we believe in redefining the travel experience through boutique luxury, warm hospitality, and inspired design. With locations across the United States, each of our hotels offers a unique vibe that reflects the spirit of its city—while delivering the consistent comfort, service, and style our guests know and love.
-
-From the sunny coasts of California to the bustling streets of New York, Kimpton properties are thoughtfully designed to create memorable stays—whether you're traveling for business, pleasure, or a little of both. At every destination, we offer modern amenities, locally inspired details, and genuine connections that make every stay personal.
-
-Kimpton Hotel Wilshire in Los Angeles is just one example of how we bring luxury and local flavor together. Wherever you stay with us, you're part of something special.
-
- </p>
-                     <a class="read_more" href="Javascript:void(0)"> Read More</a>
-                  </div>
-               </div>
-               <div class="col-md-7">
-                  <div class="about_img">
-                     <figure><img src="images/about.png" alt="#"/></figure>
-                  </div>
-               </div>
-            </div>
-         </div>
+          </div>
+        </div>
       </div>
-      <!-- end about -->
-      <!-- our_room -->
-      <div class="our_room">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Our Room</h2>
-                     <p>
-                        Our rooms offer modern comfort, sleek design, and city views—perfect for relaxing.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover" class="room" data-room="Double Queen Room" data-price="$400/night" style="cursor:pointer;">
-                     <div class="room_img">
-                        <figure><img src="images/room1.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Double Queen Room</h3>
-                        <p>Perfect for families or friends, featuring two queen beds and modern comforts. </p>
-                        <div class="price-tag">$400 <span>/night</span></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover" class="room" data-room="Accessible Room" data-price="$200/night" style="cursor:pointer;">
-                     <div class="room_img">
-                        <figure><img src="images/room2.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Accessible Room</h3>
-                        <p>Designed for comfort and ease with accessible features and thoughtful touches.</p>
-                        <div class="price-tag">$200 <span>/night</span></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover" class="room" data-room="Deluxe King Room" data-price="$400/night" style="cursor:pointer;">
-                     <div class="room_img">
-                        <figure><img src="images/room3.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Deluxe King Room</h3>
-                        <p>Spacious and stylish with a plush king bed—ideal for solo travelers or couples. </p>
-                        <div class="price-tag">$300 <span>/night</span></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover" class="room" data-room="Skyline View Room" data-price="$350/night" style="cursor:pointer;">
-                     <div class="room_img">
-                        <figure><img src="images/room4.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Skyline View Room</h3>
-                        <p>Enjoy breathtaking views of the city skyline from the comfort of your room.</p>
-                        <div class="price-tag">$350 <span>/night</span></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover" class="room" data-room="Suite with Living Area" data-price="$300/night" style="cursor:pointer;">
-                     <div class="room_img">
-                        <figure><img src="images/room5.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Suite with Living Area</h3>
-                        <p>Relax in extra space with a separate lounge area—luxury meets convenience. </p>
-                        <div class="price-tag">$300 <span>/night</span></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover" class="room" data-room="Premium Corner Room" data-price="$400/night" style="cursor:pointer;">
-                     <div class="room_img">
-                        <figure><img src="images/room6.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Premium Corner Room</h3>
-                        <p>Enjoy added privacy, extra space, and natural light from two walls of windows. </p>
-                        <div class="price-tag">$400 <span>/night</span></div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
+    </header>
+    <!-- end header inner -->
+    <!-- end header -->
+    <!-- banner -->
+    <section class="banner_main">
+      <div id="myCarousel" class="carousel slide banner" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              class="first-slide"
+              src="images/banner1.jpg"
+              alt="First slide"
+            />
+            <div class="container"></div>
+          </div>
+          <div class="carousel-item">
+            <img
+              class="second-slide"
+              src="images/banner2.jpg"
+              alt="Second slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="third-slide"
+              src="images/banner3.jpg"
+              alt="Third slide"
+            />
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#myCarousel"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#myCarousel"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      <!-- end our_room -->
-      <!-- gallery -->
-      <div  class="gallery">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>gallery</h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery1.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery2.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery3.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery4.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery5.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery6.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery7.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery8.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end gallery -->
-      <!-- blog -->
-      <div  class="blog">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Blog</h2>
-                     <p>
-Stay updated with the latest news, travel tips, and local happenings around Los Angeles—straight from Kimpton Hotel Wilshire.
- </p>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="blog_box">
-                     <div class="blog_img">
-                        <figure><img src="images/blog1.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="blog_room">
-                        <h3>Bed Room</h3>
-                        <span>The standard chunk </span>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generatorsIf you are   </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="blog_box">
-                     <div class="blog_img">
-                        <figure><img src="images/blog2.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="blog_room">
-                        <h3>First Impressions Matter</h3>
-                        <span> Stepping Into Style </span>
-                        <p>The moment you arrive at Kimpton Hotel Wilshire, you’re stepping into more than just a hotel—you’re stepping into a curated LA experience. Our entrance blends contemporary design with warm hospitality, giving every guest a stylish and inviting welcome they won't forget.
-
- </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="blog_box">
-                     <div class="blog_img">
-                        <figure><img src="images/blog3.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="blog_room">
-                        <h3>Rooftop Relaxation</h3>
-                        <span> A Hidden Gem Above the City </span>
-                        <p>Our rooftop pool isn't just a place to swim—it's an experience. With sweeping views of LA, cozy loungers, and a laid-back vibe, it's the perfect escape from the city buzz. Whether you're catching the sunrise or toasting at sunset, this elevated spot is a must-visit during your stay.
-
-  </p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end blog -->
-      <!--  contact -->
-      <div class="contact">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Contact Us</h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-6">
-                  <form id="request" class="main_form" action="https://formspree.io/f/mblowwlq" method="POST">
-                     <div class="row">
-                        <div class="col-md-12 ">
-                           <input class="contactus" placeholder="Name" type="text" name="Name" required>
-                        </div>
-                        <div class="col-md-12">
-                           <input class="contactus" placeholder="Email" type="email" name="Email" required>
-                        </div>
-                        <div class="col-md-12">
-                           <input class="contactus" placeholder="Phone Number" type="text" name="Phone Number" required>
-                        </div>
-                        <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" name="Message" required></textarea>
-                        </div>
-                        <div class="col-md-12">
-                           <button class="send_btn" type="submit">Send</button>
-                        </div>
-                     </div>
-                  </form>
-               </div>
-               <div class="col-md-6">
-                  <div class="map_main">
-                     <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France" width="600" height="400" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end contact -->
-      <!--  footer -->
-      <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row">
-                  <div class=" col-md-4">
-                     <h3>Contact US</h3>
-                     <ul class="conta">
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i> All around United States</li>
-                        <li><i class="fa fa-mobile" aria-hidden="true"></i> +44 7500169951</li>
-                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:kimptonhotel9@gmail.com"> kimptonhotel9@gmail.com</a></li>
-                     </ul>
-                  </div>
-                  <div class="col-md-4">
-                     <h3>Menu Link</h3>
-                     <ul class="link_menu">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="about.html"> about</a></li>
-                        <li><a href="room.html">Our Room</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                     </ul>
-                  </div>
-                  <div class="col-md-4">
-                     <h3>News letter</h3>
-                     <form class="bottom_form">
-                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                        <button class="sub_btn">subscribe</button>
-                     </form>
-                     <ul class="social_icon">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
+      <div class="booking_ocline">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="book_room">
+                <h1>Book a Room Online</h1>
+                <!-- Room summary display -->
+                <div
+                  id="roomSummary"
+                  style="margin-bottom: 10px; color: #ff5252; font-weight: bold"
+                ></div>
+                <form class="book_now" onsubmit="return false;">
+                  <!-- Hidden fields for room and price -->
+                  <input type="hidden" name="room_name" id="selectedRoom" />
+                  <input type="hidden" name="room_price" id="selectedPrice" />
                   <div class="row">
-                     <div class="col-md-10 offset-md-1">
-                        
-                        <p>
-                        © 2025 All Rights Reserved. 
-
-                     </div>
+                    <div class="col-md-12">
+                      <span>Arrival</span>
+                      <img
+                        class="date_cua"
+                        src="images/date.png"
+                        alt="Date Icon"
+                      />
+                      <input
+                        class="online_book"
+                        placeholder="dd/mm/yyyy"
+                        type="date"
+                        name="arrival_date"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-12">
+                      <span>Departure</span>
+                      <img
+                        class="date_cua"
+                        src="images/date.png"
+                        alt="Date Icon"
+                      />
+                      <input
+                        class="online_book"
+                        placeholder="dd/mm/yyyy"
+                        type="date"
+                        name="departure_date"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-12">
+                      <span>Email</span>
+                      <i
+                        class="fa fa-envelope date_cua"
+                        aria-hidden="true"
+                        style="font-size: 20px; color: #888; margin-right: 5px"
+                      ></i>
+                      <input
+                        class="online_book"
+                        placeholder="Enter your email"
+                        type="email"
+                        name="booking_email"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-12">
+                      <button
+                        class="book_btn"
+                        id="bookNowBtn"
+                        type="button"
+                        disabled
+                      >
+                        Book Now
+                      </button>
+                    </div>
                   </div>
-               </div>
+                </form>
+              </div>
             </div>
-         </div>
-      </footer>
-      <!-- end footer -->
-      <!-- Javascript files-->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <!-- sidebar -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
-      <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var bookBtn = document.getElementById('bookNowBtn');
-    var selectedRoomInput = document.getElementById('selectedRoom');
-    var selectedPriceInput = document.getElementById('selectedPrice');
-    var roomSummary = document.getElementById('roomSummary');
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end banner -->
+    <!-- about -->
+    <div class="about">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="titlepage">
+              <h2>About Us</h2>
+              <p style="font-size: 14px">
+                At Kimpton Hotels, we believe in redefining the travel
+                experience through boutique luxury, warm hospitality, and
+                inspired design. With locations across the United States, each
+                of our hotels offers a unique vibe that reflects the spirit of
+                its city—while delivering the consistent comfort, service, and
+                style our guests know and love. From the sunny coasts of
+                California to the bustling streets of New York, Kimpton
+                properties are thoughtfully designed to create memorable
+                stays—whether you're traveling for business, pleasure, or a
+                little of both. At every destination, we offer modern amenities,
+                locally inspired details, and genuine connections that make
+                every stay personal. Kimpton Hotel Wilshire in Los Angeles is
+                just one example of how we bring luxury and local flavor
+                together. Wherever you stay with us, you're part of something
+                special.
+              </p>
+              <a class="read_more" href="Javascript:void(0)"> Read More</a>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="about_img">
+              <figure><img src="images/about.png" alt="#" /></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end about -->
+    <!-- our_room -->
+    <div class="our_room">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2>Our Room</h2>
+              <p>
+                Our rooms offer modern comfort, sleek design, and city
+                views—perfect for relaxing.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div
+              id="serv_hover"
+              class="room"
+              data-room="Double Queen Room"
+              data-price="$400/night"
+              style="cursor: pointer"
+            >
+              <div class="room_img">
+                <figure><img src="images/room1.jpg" alt="#" /></figure>
+              </div>
+              <div class="bed_room">
+                <h3>Double Queen Room</h3>
+                <p>
+                  Perfect for families or friends, featuring two queen beds and
+                  modern comforts.
+                </p>
+                <div class="price-tag">$400 <span>/night</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div
+              id="serv_hover"
+              class="room"
+              data-room="Accessible Room"
+              data-price="$200/night"
+              style="cursor: pointer"
+            >
+              <div class="room_img">
+                <figure><img src="images/room2.jpg" alt="#" /></figure>
+              </div>
+              <div class="bed_room">
+                <h3>Accessible Room</h3>
+                <p>
+                  Designed for comfort and ease with accessible features and
+                  thoughtful touches.
+                </p>
+                <div class="price-tag">$200 <span>/night</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div
+              id="serv_hover"
+              class="room"
+              data-room="Deluxe King Room"
+              data-price="$400/night"
+              style="cursor: pointer"
+            >
+              <div class="room_img">
+                <figure><img src="images/room3.jpg" alt="#" /></figure>
+              </div>
+              <div class="bed_room">
+                <h3>Deluxe King Room</h3>
+                <p>
+                  Spacious and stylish with a plush king bed—ideal for solo
+                  travelers or couples.
+                </p>
+                <div class="price-tag">$300 <span>/night</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div
+              id="serv_hover"
+              class="room"
+              data-room="Skyline View Room"
+              data-price="$350/night"
+              style="cursor: pointer"
+            >
+              <div class="room_img">
+                <figure><img src="images/room4.jpg" alt="#" /></figure>
+              </div>
+              <div class="bed_room">
+                <h3>Skyline View Room</h3>
+                <p>
+                  Enjoy breathtaking views of the city skyline from the comfort
+                  of your room.
+                </p>
+                <div class="price-tag">$350 <span>/night</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div
+              id="serv_hover"
+              class="room"
+              data-room="Suite with Living Area"
+              data-price="$300/night"
+              style="cursor: pointer"
+            >
+              <div class="room_img">
+                <figure><img src="images/room5.jpg" alt="#" /></figure>
+              </div>
+              <div class="bed_room">
+                <h3>Suite with Living Area</h3>
+                <p>
+                  Relax in extra space with a separate lounge area—luxury meets
+                  convenience.
+                </p>
+                <div class="price-tag">$300 <span>/night</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div
+              id="serv_hover"
+              class="room"
+              data-room="Premium Corner Room"
+              data-price="$400/night"
+              style="cursor: pointer"
+            >
+              <div class="room_img">
+                <figure><img src="images/room6.jpg" alt="#" /></figure>
+              </div>
+              <div class="bed_room">
+                <h3>Premium Corner Room</h3>
+                <p>
+                  Enjoy added privacy, extra space, and natural light from two
+                  walls of windows.
+                </p>
+                <div class="price-tag">$400 <span>/night</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end our_room -->
+    <!-- gallery -->
+    <div class="gallery">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2>gallery</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <div class="gallery_img">
+              <figure><img src="images/gallery1.jpg" alt="#" /></figure>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="gallery_img">
+              <figure><img src="images/gallery2.jpg" alt="#" /></figure>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="gallery_img">
+              <figure><img src="images/gallery3.jpg" alt="#" /></figure>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="gallery_img">
+              <figure><img src="images/gallery4.jpg" alt="#" /></figure>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="gallery_img">
+              <figure><img src="images/gallery5.jpg" alt="#" /></figure>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="gallery_img">
+              <figure><img src="images/gallery6.jpg" alt="#" /></figure>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="gallery_img">
+              <figure><img src="images/gallery7.jpg" alt="#" /></figure>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="gallery_img">
+              <figure><img src="images/gallery8.jpg" alt="#" /></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end gallery -->
+    <!-- blog -->
+    <div class="blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2>Blog</h2>
+              <p>
+                Stay updated with the latest news, travel tips, and local
+                happenings around Los Angeles—straight from Kimpton Hotel
+                Wilshire.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="blog_box">
+              <div class="blog_img">
+                <figure><img src="images/blog1.jpg" alt="#" /></figure>
+              </div>
+              <div class="blog_room">
+                <h3>Bed Room</h3>
+                <span>The standard chunk </span>
+                <p>
+                  If you are going to use a passage of Lorem Ipsum, you need to
+                  be sure there isn't anything embarrassing hidden in the middle
+                  of text. All the Lorem Ipsum generatorsIf you are
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog_box">
+              <div class="blog_img">
+                <figure><img src="images/blog2.jpg" alt="#" /></figure>
+              </div>
+              <div class="blog_room">
+                <h3>First Impressions Matter</h3>
+                <span> Stepping Into Style </span>
+                <p>
+                  The moment you arrive at Kimpton Hotel Wilshire, you’re
+                  stepping into more than just a hotel—you’re stepping into a
+                  curated LA experience. Our entrance blends contemporary design
+                  with warm hospitality, giving every guest a stylish and
+                  inviting welcome they won't forget.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog_box">
+              <div class="blog_img">
+                <figure><img src="images/blog3.jpg" alt="#" /></figure>
+              </div>
+              <div class="blog_room">
+                <h3>Rooftop Relaxation</h3>
+                <span> A Hidden Gem Above the City </span>
+                <p>
+                  Our rooftop pool isn't just a place to swim—it's an
+                  experience. With sweeping views of LA, cozy loungers, and a
+                  laid-back vibe, it's the perfect escape from the city buzz.
+                  Whether you're catching the sunrise or toasting at sunset,
+                  this elevated spot is a must-visit during your stay.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end blog -->
+    <!--  contact -->
+    <div class="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2>Contact Us</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <form
+              id="request"
+              class="main_form"
+              action="https://formspree.io/f/mblowwlq"
+              method="POST"
+            >
+              <div class="row">
+                <div class="col-md-12">
+                  <input
+                    class="contactus"
+                    placeholder="Name"
+                    type="text"
+                    name="Name"
+                    required
+                  />
+                </div>
+                <div class="col-md-12">
+                  <input
+                    class="contactus"
+                    placeholder="Email"
+                    type="email"
+                    name="Email"
+                    required
+                  />
+                </div>
+                <div class="col-md-12">
+                  <input
+                    class="contactus"
+                    placeholder="Phone Number"
+                    type="text"
+                    name="Phone Number"
+                    required
+                  />
+                </div>
+                <div class="col-md-12">
+                  <textarea
+                    class="textarea"
+                    placeholder="Message"
+                    name="Message"
+                    required
+                  ></textarea>
+                </div>
+                <div class="col-md-12">
+                  <button class="send_btn" type="submit">Send</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="map_main">
+              <div class="map-responsive">
+                <iframe
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France"
+                  width="600"
+                  height="400"
+                  frameborder="0"
+                  style="border: 0; width: 100%"
+                  allowfullscreen=""
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end contact -->
+    <!--  footer -->
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Contact US</h3>
+              <ul class="conta">
+                <li>
+                  <i class="fa fa-map-marker" aria-hidden="true"></i> All around
+                  United States
+                </li>
+                <li>
+                  <i class="fa fa-mobile" aria-hidden="true"></i> +44 7500169951
+                </li>
+                <li>
+                  <i class="fa fa-envelope" aria-hidden="true"></i
+                  ><a href="mailto:kimptonhotel9@gmail.com">
+                    kimptonhotel9@gmail.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h3>Menu Link</h3>
+              <ul class="link_menu">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="about.html"> about</a></li>
+                <li><a href="room.html">Our Room</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h3>News letter</h3>
+              <form class="bottom_form">
+                <input
+                  class="enter"
+                  placeholder="Enter your email"
+                  type="text"
+                  name="Enter your email"
+                />
+                <button class="sub_btn">subscribe</button>
+              </form>
+              <ul class="social_icon">
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-facebook" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-twitter" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-linkedin" aria-hidden="true"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fa fa-youtube-play" aria-hidden="true"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 offset-md-1">
+                <p>© 2025 All Rights Reserved.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var bookBtn = document.getElementById("bookNowBtn");
+        var selectedRoomInput = document.getElementById("selectedRoom");
+        var selectedPriceInput = document.getElementById("selectedPrice");
+        var roomSummary = document.getElementById("roomSummary");
 
-    // Make sure the button is disabled at first
-    if (bookBtn) bookBtn.disabled = true;
+        // Make sure the button is disabled at first
+        if (bookBtn) bookBtn.disabled = true;
 
-    // Room selection logic
-    document.querySelectorAll('.room').forEach(function(roomCard) {
-        roomCard.addEventListener('click', function() {
-            var roomName = this.getAttribute('data-room');
-            var roomPrice = this.getAttribute('data-price');
-            if (selectedRoomInput && selectedPriceInput && roomSummary && bookBtn) {
-                selectedRoomInput.value = roomName;
-                selectedPriceInput.value = roomPrice;
-                roomSummary.textContent = "Selected: " + roomName + " (" + roomPrice + ")";
-                bookBtn.disabled = false;
+        // Room selection logic
+        document.querySelectorAll(".room").forEach(function (roomCard) {
+          roomCard.addEventListener("click", function () {
+            var roomName = this.getAttribute("data-room");
+            var roomPrice = this.getAttribute("data-price");
+            if (
+              selectedRoomInput &&
+              selectedPriceInput &&
+              roomSummary &&
+              bookBtn
+            ) {
+              selectedRoomInput.value = roomName;
+              selectedPriceInput.value = roomPrice;
+              roomSummary.textContent =
+                "Selected: " + roomName + " (" + roomPrice + ")";
+              bookBtn.disabled = false;
             }
             // Highlight selected room
-            document.querySelectorAll('.room').forEach(function(r){ r.style.boxShadow = ""; });
+            document.querySelectorAll(".room").forEach(function (r) {
+              r.style.boxShadow = "";
+            });
             this.style.boxShadow = "0 0 0 4px #ff5252";
-            document.querySelector('.book_room').scrollIntoView({behavior: "smooth"});
+            document
+              .querySelector(".book_room")
+              .scrollIntoView({ behavior: "smooth" });
+          });
         });
-    });
 
-    // Prevent form submission if no room is selected
-    document.querySelector('.book_now').addEventListener('submit', function(e) {
-        if (!selectedRoomInput.value) {
-            alert('Please pick a room before booking. You will be taken to the room selection section.');
-            var roomSection = document.querySelector('.our_room');
-            if(roomSection) {
-                roomSection.scrollIntoView({behavior: "smooth"});
+        // Redirect to payment page on Book Now
+        if (bookBtn) {
+          bookBtn.addEventListener("click", function () {
+            if (!selectedRoomInput.value) {
+              alert(
+                "Please pick a room before booking. You will be taken to the room selection section."
+              );
+              var roomSection = document.querySelector(".our_room");
+              if (roomSection) {
+                roomSection.scrollIntoView({ behavior: "smooth" });
+              }
+              return;
             }
-            e.preventDefault();
+            // Pass room and price as URL parameters
+            var params = new URLSearchParams({
+              room: selectedRoomInput.value,
+              price: selectedPriceInput.value,
+            });
+            window.location.href = "payment.html?" + params.toString();
+          });
         }
-    });
-});
-</script>
-   </body>
+      });
+    </script>
+  </body>
 </html>
