@@ -37,7 +37,7 @@
       <h2 class="mt-5 text-center">Complete Your Booking</h2>
       <div id="bookingDetails" class="alert alert-info mt-3 text-center"></div>
       <div class="payment-methods row justify-content-center">
-        <div class="col-md-5 col-12 payment-option mb-4">
+        <div class="col-md-4 col-12 payment-option mb-4">
           <div class="card shadow-sm h-100">
             <div class="card-body text-center">
               <h4 class="mb-3" style="color: #28c101">
@@ -65,7 +65,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 col-12 payment-option mb-4">
+        <div class="col-md-4 col-12 payment-option mb-4">
           <div class="card shadow-sm h-100">
             <div class="card-body text-center">
               <h4 class="mb-3" style="color: #0070ba">
@@ -105,6 +105,56 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4 col-12 payment-option mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+              <h4 class="mb-3" style="color: #f7931a">
+                <img
+                  src="images/btc.jpg"
+                  alt="Bitcoin"
+                  style="
+                    width: 28px;
+                    height: 28px;
+                    vertical-align: middle;
+                    margin-right: 6px;
+                  "
+                />
+                Bitcoin
+              </h4>
+              <p>Send BTC to this wallet address:</p>
+              <div
+                id="btcAddress"
+                style="
+                  font-size: 1rem;
+                  word-break: break-all;
+                  font-weight: 700;
+                  color: #222;
+                  margin-bottom: 10px;
+                  cursor: pointer;
+                  transition: color 0.2s;
+                "
+                title="Click to copy address"
+              >
+                bc1qcmp6pz6ddlcw8evkf339vap9qg85fms5hp24nh
+              </div>
+              <img
+                src="images/btc.jpg"
+                alt="Bitcoin QR"
+                style="
+                  max-width: 140px;
+                  width: 100%;
+                  margin: 10px auto;
+                  display: block;
+                  border-radius: 12px;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                "
+              />
+              <p class="mt-2 mb-0" style="font-size: 14px; color: #888">
+                Scan QR with your Bitcoin wallet app
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script>
@@ -122,6 +172,19 @@
       document.getElementById("paypalAmount").value = priceMatch
         ? priceMatch[1]
         : "";
+      // Copy BTC address on click
+      const btcAddressDiv = document.getElementById("btcAddress");
+      const btcWallet = "bc1qcmp6pz6ddlcw8evkf339vap9qg85fms5hp24nh";
+      btcAddressDiv.addEventListener("click", function () {
+        navigator.clipboard.writeText(btcWallet).then(function () {
+          btcAddressDiv.style.color = "#f7931a";
+          btcAddressDiv.textContent = btcWallet + "  (Copied!)";
+          setTimeout(function () {
+            btcAddressDiv.style.color = "#222";
+            btcAddressDiv.textContent = btcWallet;
+          }, 1500);
+        });
+      });
     </script>
   </body>
 </html>
