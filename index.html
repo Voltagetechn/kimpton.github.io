@@ -55,6 +55,9 @@
         letter-spacing: 1px;
         transition: color 0.2s;
       }
+      .navbar-dark .navbar-nav .nav-link {
+        color: #222 !important;
+      }
       .navbar-nav .nav-link.active,
       .navbar-nav .nav-link:hover {
         color: #d7263d !important;
@@ -69,6 +72,14 @@
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(215,38,61,0.7)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
       }
       @media (max-width: 767px) {
+        .navbar,
+        .navbar-dark {
+          background: #fff !important;
+        }
+        .navbar-nav .nav-link,
+        .navbar-dark .navbar-nav .nav-link {
+          color: #fff !important;
+        }
         .Headme {
           font-size: 1.3rem;
           color: red;
